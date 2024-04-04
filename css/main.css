@@ -1,9 +1,9 @@
-@layer reset, global, main, components, states;
+@layer reset, global, main, component, states;
 
-@import url("/css/reset.css") layer(reset);
-@import url("/css/global.css") layer(global);
-@import url("/css/component.css") layer(component);
-@import url("/css/states.css") layer(states);
+@import url("reset.css") layer(reset);
+@import url("global.css") layer(global);
+@import url("component.css") layer(component);
+@import url("./states.css") layer(states);
 
 html {
   font-family: monospace;

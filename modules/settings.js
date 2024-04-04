@@ -1,0 +1,2 @@
+export const apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF4d2Nncnp5Z3NsamZ5em52Ynp1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA3NTAyNjEsImV4cCI6MjAyNjMyNjI2MX0.azqDV5E4pGDrkX_UJ1B2VOob6I0d0vX5PRLuJGrEXoA";
+export const endpoint = "https://axwcgrzygsljfyznvbzu.supabase.co/rest/v1/dishes";

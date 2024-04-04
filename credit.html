@@ -1,0 +1,112 @@
+<!--
+    three inputs, one submit 
+    length >= next input
+    last input done focus on button
+-->
+
+<html lang="en">
+
+<body>
+    <form>
+        <fieldset>
+            <legend>Card</legend>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" min="3" maxlength="24" value="" required>
+            </div>
+            <div class="form-group">
+                <label for="cardnumber">CardNumber</label>
+                <input type="text" name="cardnumber" id="cardnumber" min="12" maxlength="20" required>
+            </div>
+            <div class="form-group">
+                <label for="cvc">CVC</label>
+                <input type="text" name="cvc" id="cvc" maxlength="4" required>
+            </div>
+            <div class="form-group">
+                <label for="date">ExpiryDate</label>
+                <input type="text" name="date" id="date" minlength="4" maxlength="10" required>
+            </div>
+        </fieldset>
+        <button type="submit">Validate</button>
+    </form>
+    <script defer>
+        const form = document.querySelector("form");
+
+        const name = document.querySelector("#name");
+        const cn = document.querySelector("#cardnumber");
+        const cvc = document.querySelector("#cvc");
+        const date = document.querySelector("#date");
+
+        const submit = document.querySelector("button");
+        const template = document.querySelector("template");
+        const allInput = document.querySelectorAll("input");
+
+        // name.addEventListener("input", () => {
+        //     if (name.value.length == name.maxLength) {
+        //         cn.focus();
+        //         console.log("shift it!")
+        //     }
+        // })
+        // cn.addEventListener("input", () => {
+        //     if (cn.value.length == cn.maxLength) {
+        //         cvc.focus();
+        //         console.log("shift it!")
+        //     }
+        // })
+        // cvc.addEventListener("input", () => {
+        //     if (cvc.value.length == cvc.maxLength) {
+        //         date.focus();
+        //         console.log("shift it!")
+        //     }
+        // })
+
+        allInput.forEach((input, index) => {
+            console.log(index)
+            input.addEventListener("input", () => {
+                if (input.value.length == input.maxLength && input.name != "date") {
+                    allInput[index + 1].focus();
+                    console.log("You're at index:", index)
+                    // const label = input.nextElementSibling;
+                    // label.focus();
+                }
+            })
+        });
+
+        submit.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            // if doesn't validate, focus to whichever needs focus
+        })
+    </script>
+    <template>
+        <div>
+            <h2>Input #<span></span></h2>
+        </div>
+    </template>
+</body>
+
+</html>
+
+<style>
+    body {
+        display: grid;
+        place-content: center;
+        background-color: hotpink;
+        font-family: monospace;
+    }
+
+    fieldset {
+        display: flex;
+        max-width: 600px;
+        background-color: white;
+        flex-direction: column;
+        border: none;
+        padding: 1rem;
+        border-radius: 1rem;
+
+        legend {
+            font-size: 2rem;
+            font-weight: bolder;
+        }
+    }
+</style>

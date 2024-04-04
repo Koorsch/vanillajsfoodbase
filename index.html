@@ -1,183 +1,218 @@
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="robots" content="noindex">
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-        <link rel="stylesheet" href="css/main.css">
-		<title>{title}</title>
-	</head>
-	<body>
-		<main class="flow-space">
-<div class="container_wrapper">
-    <form id="foodForm" class="flow_space" aria-labelledby="header_food">
-    <h2 id="header_food">Make a dish</h2>
-    <article class="article-group flow_space">
-        <fieldset class="section-group">
-            <legend>Your dish</legend>
-            <div class="form-control">
-                <!-- name text-->
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" required autocomplete="off" inputmode="text">
-            </div>
-            <div class="form-control">
-                <!-- type list text -->
-                <label for="listType">Type of dish</label>
-                <select required name="listType" id="listType">
-                    <option id="starter">Starter</option>
-                    <option id="main">Main</option>
-                    <option id="dessert">Dessert</option>
-                    <option id="snack">Snack</option>
-                </select>
-            </div>
-            <div class="form-control">
-                <!-- origin text -->
-                <label for="origin">Origin</label>
-                    <select name="origin" id="origin">
-                    </select>
-            </div>
-            <div class="form-control">
-                <!-- serves number -->
-                    <label for="serves">Servings</label>
-                    <input type="number" name="serves" id="serves" inputmode="numeric">
-            </div>
-            <div class="form-control">
-                <label for="studentFriendly">Studentfriendly</label>
-                <input type="checkbox" name="studentFriendly" id="studentFriendly">
-            </div>
-        </fieldset>
-    </article>
-    <article class="article-group">
-            <fieldset class="section-group">
-                <legend>What's in it?</legend>
-                <div class="form-control">
-                    <label for="description">Ingredients</label>
-                    <textarea class="full-width" name="description" id="description" rows="4" cols="1" inputmode="text"></textarea>
-                </div>
-            </fieldset>
-            <fieldset class="section-group" id="allergens">
-                <legend>Allergens</legend>
-                <div class="form-control">
-                    <label for="nuts">Nuts</label>
-                    <input type="checkbox" name="nuts" id="nuts">
-                </div>
-                <div class="form-control">
-                    <label for="lactos">Lactos</label>
-                    <input type="checkbox" name="lactos" id="lactos">
-                </div>
-                <div class="form-control">
-                    <label for="food">Food</label>
-                    <input type="checkbox" name="food" id="food">
-                </div>
-            </fieldset>
-            
-            <fieldset class="section-group" id="diet">
-                <legend>Choose your diet.</legend>
-                    <div class="form-control">
-                        <label for="vegetarian">Vegetarian</label>
-                        <input type="radio" id="vegetarian" name="vegetarian">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="css/main.css">
+    <title>Foodbase</title>
+</head>
+
+<body>
+    <main class="flow-space">
+        <div class="container_wrapper">
+            <form id="foodForm" class="flow_space" aria-labelledby="header_food">
+                <h2 id="header_food">Make a dish</h2>
+                <article class="article-group flow_space">
+                    <fieldset class="section-group">
+                        <legend>Your dish</legend>
+                        <div class="form-control">
+                            <!-- name text-->
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" required autocomplete="off" minlength="2"
+                                inputmode="text">
+                        </div>
+                        <div class="form-control">
+                            <!-- type list text -->
+                            <label for="listType">Type of dish</label>
+                            <select required name="listType" id="listType" required>
+                                <option id="starter">Starter</option>
+                                <option id="main">Main</option>
+                                <option id="dessert">Dessert</option>
+                                <option id="snack">Snack</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <!-- origin text -->
+                            <label for="origin">Origin</label>
+                            <input type="text" id="origin" name="origin" list="countrylist" required min="1" max="50" />
+                            <datalist id="countrylist">
+                                <option value="Denmark"></option>
+                                <option value="Sweden"></option>
+                                <option value="Norway"></option>
+                            </datalist>
+                        </div>
+                        <div class="form-control">
+                            <!-- serves number -->
+                            <label for="serves">Servings</label>
+                            <input type="number" name="serves" id="serves" minlength="1" maxlength="999"
+                                inputmode="numeric" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="studentFriendly">Studentfriendly</label>
+                            <input type="checkbox" name="studentFriendly" id="studentFriendly">
+                        </div>
+                    </fieldset>
+                </article>
+                <article class="article-group">
+                    <fieldset class="section-group">
+                        <legend>What's in it?</legend>
+                        <div class="form-control">
+                            <label for="description">Ingredients</label>
+                            <textarea class="full-width" name="description" id="description" rows="4" cols="1"
+                                inputmode="text"></textarea>
+                        </div>
+                    </fieldset>
+                    <fieldset class="section-group" id="allergens" required>
+                        <legend>Allergens</legend>
+                        <div class="form-control">
+                            <label for="nuts">Nuts</label>
+                            <input type="checkbox" name="nuts" id="nuts">
+                        </div>
+                        <div class="form-control">
+                            <label for="lactos">Lactos</label>
+                            <input type="checkbox" name="lactos" id="lactos">
+                        </div>
+                        <div class="form-control">
+                            <label for="food">Food</label>
+                            <input type="checkbox" name="food" id="food">
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="section-group" id="diet" required>
+                        <legend>Choose your diet.</legend>
+                        <div class="form-control">
+                            <label for="vegetarian">Vegetarian</label>
+                            <input type="radio" id="vegetarian" name="vegetarian">
+                        </div>
+                        <div class="form-control">
+                            <label for="vegan">Vegan</label>
+                            <input type="radio" id="vegan" name="vegan">
+                        </div>
+                        <div class="form-control">
+                            <label for="pescatarian">Pescatarian</label>
+                            <input type="radio" id="pescatarian" name="pescatarian">
+                        </div>
+                        <div class="form-control">
+                            <label for="carnivore">Carnivore</label>
+                            <input type="radio" id="carnivore" name="carnivore">
+                        </div>
+                    </fieldset>
+                </article>
+                <button id="submit" type="submit">Send</button>
+            </form>
+        </div>
+        <section class="recipes"></section>
+    </main>
+    <script defer>
+        const form = document.querySelector("#form");
+        const name = document.querySelector("#name");
+        const desc = document.querySelector("#description");
+        name.addEventListener("input", (e) => {
+            console.log("You wrote: ", name.value);
+        })
+        name.addEventListener("focus", (f) => {
+            console.log("You focused");
+            document.querySelector("#description").focus();
+        })
+        name.addEventListener("blur", (f) => {
+            console.log("You lost focus");
+            name.blur();
+        })
+    </script>
+    <template>
+        <article class="card">
+            <header>
+                <div class="header-content">
+                    <h2>
+                        <span data-name>Brændende kærlighed</span>,
+                        <span data-origin>Denmark</span>
+                    </h2>
+
+                    <div>
+                        <dl>
+                            <div>
+                                <dt class="visually-hidden">Species</dt>
+                                <dd data-origin>Denmark</dd>
+                            </div>
+                        </dl>
+                        <dl>
+                            <div>
+                                <dt class="visually-hidden">Diet</dt>
+                                <dd data-diet>Vegetarian</dd>
+                            </div>
+                        </dl>
                     </div>
-                    <div class="form-control">
-                        <label for="vegan">Vegan</label>
-                        <input type="radio" id="vegan" name="vegan">
-                    </div>
-                    <div class="form-control">
-                        <label for="pescatarian">Pescatarian</label>
-                        <input type="radio" id="pescatarian" name="pescatarian">
-                    </div>
-                    <div class="form-control">
-                        <label for="carnivore">Carnivore</label>
-                        <input type="radio" id="carnivore" name="carnivore">    
-                    </div>
-            </fieldset>
+                </div>
+                <p class="status">
+                    <span data-studentFriendly>Student Friendly!</span>
+                </p>
+                <img data-img src="https://source.unsplash.com/random/600x300?random" alt="" />
+            </header>
+            <dl class="ingredient-list" data-ingredients>
+                <dt class="visually-hidden">Ingredients</dt>
+            </dl>
+            <section>
+                <h3>Serves</h3>
+                <meter data-serves min="0" max="5" low="0" high="5" value="3"></meter>
+            </section>
+            <div class="actions">
+                <button data-id="15" data-action="delete">Slet</button>
+                <button data-id="15" data-action="update">Opdater</button>
+            </div>
         </article>
-        <button id="submit" type="submit">Send</button>
-</form>
-</div>
-    <!-- <script type="module" src="utils/"></script>         -->
-		</main>
-        <script>
-            import { countries } from "./utils/countries.js";
-                async function setupCountries() {
-                    const list = document.querySelector("#origin");
-                    const frgmt = document.createDocumentFragment();
-                    countries.forEach((c) => {
-                        const option = document.createElement("option");
-                        option.value = c.name;
-                        frgmt.appendChild(option);
-                    });
-                    list.appendChild(frgmt);
-                }
-        </script>
-        <script>
-            const deleteBtns = document.querySelectorAll("[data-id]");
-                deleteBtns.forEach(btn => btn.addEventListener("click", async () => {
-                    const postId = btn.dataset.id;
-                    const res = await fetch(`/api/posts/${postId}.json`, {
-                        method: "DELETE",
-                    })
-                    const {message} = await res.json();
-                    console.log("deletebuttons for each: ", message)
-                }))
-        </script>
-        <script>
-            const newPost = document.querySelector("#foodForm");
-            newPost?.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                const formData = new FormData(newPost);
-                const values = Object.fromEntries(formData);
-                console.log("~~ FormPost - Data  \n", values);
-                const res = await fetch("/api/posts.json", {
-                    method: "POST",
-                    body: JSON.stringify(values),
-                });
-                const { message } = await res.json();
-                console.log("newpostform message:", message);
-            });
-        </script>
-	</body>
+    </template>
+
+    <script type="module" src="index.js"></script>
+</body>
+
 </html>
-	
 
 <style>
-form {
-    display: grid;
-    background-color: #fff;
-    border-radius: 2rem;
-    padding: 2rem;
-}
-fieldset {
-    /* display: grid;
+    form {
+        display: grid;
+        background-color: #fff;
+        border-radius: 2rem;
+        padding: 2rem;
+    }
+
+    fieldset {
+        /* display: grid;
     grid: auto 1fr / 1fr;    */
-}
-.article-group {
-    display: grid;
-    grid: auto / 1fr;
-}
-.section-group {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 2rem;
-    height: fit-content;
-    & :has(#description) 
-    {
-        display: block;
     }
-}
-.form-control {
-    display: grid;
-    grid: 1fr 30px / 1fr;
-    row-gap: 0.25rem;
-    width: fit-content;
-    height: fit-content;
-    & #description {
-        display: block;
-        min-width: 150px;
-        min-height: 75px;
+
+    .article-group {
+        display: grid;
+        grid: auto / 1fr;
     }
-}
-.full-width {
-    width: 100%;
-}
+
+    .section-group {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 2rem;
+        height: fit-content;
+
+        & :has(#description) {
+            display: block;
+        }
+    }
+
+    .form-control {
+        display: grid;
+        grid: 1fr 30px / 1fr;
+        row-gap: 0.25rem;
+        width: fit-content;
+        height: fit-content;
+
+        & #description {
+            display: block;
+            min-width: 150px;
+            min-height: 75px;
+        }
+    }
+
+    .full-width {
+        width: 100%;
+    }
 </style>

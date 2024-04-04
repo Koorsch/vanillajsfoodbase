@@ -1,1 +1,13 @@
-/* fill it up at some point? */
+/* RECIPIES */
+/* CARD STYLING */
+.recipes {
+  display: grid;
+  grid: auto / 1fr;
+  background-color: hotpink;
+  gap: 2rem;
+}
+.card {
+  display: grid;
+  padding-block: 1rem;
+  background-color: green;
+}
