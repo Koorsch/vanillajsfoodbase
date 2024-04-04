@@ -1,0 +1,24 @@
+@layer reset, global, main, components, states;
+
+@import url("/css/reset.css") layer(reset);
+@import url("/css/global.css") layer(global);
+@import url("/css/component.css") layer(component);
+@import url("/css/states.css") layer(states);
+
+html {
+  font-family: monospace;
+}
+body {
+  display: grid;
+  background-color: var(--bg-col);
+}
+main {
+  display: grid;
+  grid: auto 1fr / [page-start] 1fr [content] minmax(0, var(--content)) [page-second] 1fr [page-end];
+  & > * {
+    grid-column: content;
+  }
+  & .full {
+    grid-column: page;
+  }
+}

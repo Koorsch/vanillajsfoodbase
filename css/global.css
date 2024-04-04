@@ -1,0 +1,109 @@
+:root {
+  /* CUSTOM SIZES */
+  --content: 60rem;
+  /* COLORS */
+  --bg-col: rgb(237, 210, 129);
+  --container-col: rgb(95, 180, 255);
+  --font-col-copy-1: rgb(59, 59, 59);
+  --font-col-copy-2: rgb(40, 40, 40);
+  --font-col-heading-1: #232323;
+  --font-col-heading-2: #1a1a1a;
+
+  /* FONT FAMILIES */
+  --header-font: Arial, system-ui, sans-serif;
+  --copy-font: mono-space, system-ui, sans-serif;
+  
+  /* Font spacings */
+  --space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
+  --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
+  --space-m: clamp(1.5rem, 1.4348rem + 0.3261cqi, 1.6875rem);
+  --space-l: clamp(2rem, 1.913rem + 0.4348cqi, 2.25rem);
+  --space-xl: clamp(3rem, 2.8696rem + 0.6522cqi, 3.375rem);
+  --space-2xl: clamp(4rem, 3.8261rem + 0.8696cqi, 4.5rem);
+
+  /* One-up pairs */
+  --space-xs-s: clamp(0.75rem, 0.6196rem + 0.6522cqi, 1.125rem);
+  --space-s-m: clamp(1rem, 0.7609rem + 1.1957cqi, 1.6875rem);
+  --space-m-l: clamp(1.5rem, 1.2391rem + 1.3043cqi, 2.25rem);
+  --space-l-xl: clamp(2rem, 1.5217rem + 2.3913cqi, 3.375rem);
+  --space-xl-2xl: clamp(3rem, 2.4783rem + 2.6087cqi, 4.5rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(1rem, 0.5652rem + 2.1739cqi, 2.25rem);
+
+  /* FONT SIZES */
+  --font-size--1: clamp(0.8rem, 0.7847rem + 0.0765cqi, 0.844rem);
+  --font-size-0: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
+  --font-size-1: clamp(1.25rem, 1.1632rem + 0.4341cqi, 1.4996rem);
+  --font-size-2: clamp(1.5625rem, 1.4107rem + 0.7591cqi, 1.999rem);
+  --font-size-3: clamp(1.9531rem, 1.7056rem + 1.2375cqi, 2.6647rem);
+  --font-size-4: clamp(2.4414rem, 2.0551rem + 1.9315cqi, 3.552rem);
+  --font-size-5: clamp(3.0518rem, 2.4663rem + 2.9271cqi, 4.7348rem);
+
+  /* FONT WEIGHTS */
+  --font-weight--1: 300;
+  --font-weight-0: 400;
+  --font-weight-1: 500;
+  --font-weight-2: 600;
+  --font-weight-3: 700;
+  --font-weight-4: 800;
+
+  /* FLOW SPACE */
+  --flow_space: 0.25rem;
+}
+
+body {
+  font-size: var(--font-size-0);
+  font-weight: var(--font-weight-0);
+  font-family: var(--copy-font);
+  margin-inline-end: var(--space-s);
+}
+
+/* FONTS FAMILY*/
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--header-font);
+  font-weight: 800;
+  margin-block: 1rem;
+  & > * {
+    margin-block-end: var(--flow_space, 1rem);
+  }
+}
+p,
+span {
+  font-family: var(--copy-font);
+  font-weight: var(--font-weight-0);
+}
+/* FONT SIZE */
+h1 {
+  font-size: var(--font-size-5);
+}
+h2 {
+  font-size: var(--font-size-4);
+}
+h3 {
+  font-size: var(--font-size-3);
+}
+h4 {
+  font-size: var(--font-size-2);
+}
+h5 {
+  font-size: var(--font-size-1);
+}
+p,
+span {
+  font-size: var(--font-size-0);
+}
+.smaller {
+  font-size: var(--font-size--1);
+}
+
+/* CUSTOM CLASSES */
+.flow_space {
+  > * + * {
+    margin-block: var(--flow_space, 1rem);
+  }
+}
