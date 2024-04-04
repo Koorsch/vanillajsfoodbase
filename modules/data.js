@@ -13,9 +13,6 @@ export async function getRecipes() {
   let data = await response.json();
   return data;
 }
-//WET - Write Everything Twice
-//DRY - Don't Repeat Yourself
-//AHA - Avoid Hasty Abstractions
 
 export async function createRecipe(recipe) {
   let headersList = {
@@ -52,6 +49,8 @@ export async function deleteRecipe(id) {
   let data = await response.json();
   return data;
 }
+
+// GET THIS ONE UPDATED?!
 export async function updateRecipe(id, state = true) {
   let headersList = {
     Accept: "application/json",

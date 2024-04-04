@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- REMEMBER TO MAKE A FAVICON DOFUS <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="css/main.css">
@@ -25,8 +25,8 @@
                         </div>
                         <div class="form-control">
                             <!-- type list text -->
-                            <label for="listType">Type of dish</label>
-                            <select required name="listType" id="listType" required>
+                            <label for="dishtype">Type of dish</label>
+                            <select data-dishtype name="dishtype" id="dishtype"  required>
                                 <option id="starter">Starter</option>
                                 <option id="main">Main</option>
                                 <option id="dessert">Dessert</option>
@@ -36,7 +36,7 @@
                         <div class="form-control">
                             <!-- origin text -->
                             <label for="origin">Origin</label>
-                            <input type="text" id="origin" name="origin" list="countrylist" required min="1" max="50" />
+                            <input data-origin type="text" id="origin" name="origin" list="countrylist" required min="1" max="50" />
                             <datalist id="countrylist">
                                 <option value="Denmark"></option>
                                 <option value="Sweden"></option>
@@ -59,8 +59,8 @@
                     <fieldset class="section-group">
                         <legend>What's in it?</legend>
                         <div class="form-control">
-                            <label for="description">Ingredients</label>
-                            <textarea class="full-width" name="description" id="description" rows="4" cols="1"
+                            <label for="ingredients">Ingredients</label>
+                            <textarea class="full-width" name="ingredients" id="ingredients" rows="4" cols="1"
                                 inputmode="text"></textarea>
                         </div>
                     </fieldset>
@@ -105,28 +105,53 @@
         </div>
         <section class="recipes"></section>
     </main>
-    <script defer>
-        const form = document.querySelector("#form");
-        const name = document.querySelector("#name");
-        const desc = document.querySelector("#description");
-        name.addEventListener("input", (e) => {
-            console.log("You wrote: ", name.value);
-        })
-        name.addEventListener("focus", (f) => {
-            console.log("You focused");
-            document.querySelector("#description").focus();
-        })
-        name.addEventListener("blur", (f) => {
-            console.log("You lost focus");
-            name.blur();
-        })
-    </script>
+
+
     <template>
+    <article class="card">
+        <input type="checkbox" name="card__dish" id="card__dish">
+        <header>
+            <div class="header-content">
+                <h2>
+                    <label for="card__dish">
+                        <span data-name>Name of Dish</span>
+                    </label>
+                        <span data-origin>Origin</span>
+                    </h2>
+                </div>
+            </header>
+            <section class="card__content">
+                <div class="card__front">
+                    <picture>
+                        <img data-image src="assets/images/banana.png" alt="">
+                    </picture>
+                </div>
+                <div class="card__back">
+                    <p data-description></p>
+                    <p data-ingredients></p>
+                </div>
+            </section>
+            <footer>
+                <div>
+                    <span data-diet>You eat?</span>
+                    <span data-allergens>Want some lactos with DEEZ NUTS?</span>
+                    <span class="sf">Studentfriendly?</span>
+                    <span data-dishtype></span>
+                </div>
+                <div>
+                    <button data-id="15" data-action="delete">Delete</button>
+                    <button data-id="15" data-action="update">Update</button>
+                </div>
+            </footer>
+    </article>
+</template>
+
+    <!-- <template>
         <article class="card">
             <header>
                 <div class="header-content">
                     <h2>
-                        <span data-name>Brændende kærlighed</span>,
+                        <span data-name>Brændende kærlighed</span>
                         <span data-origin>Denmark</span>
                     </h2>
 
@@ -162,7 +187,7 @@
                 <button data-id="15" data-action="update">Opdater</button>
             </div>
         </article>
-    </template>
+    </template> -->
 
     <script type="module" src="index.js"></script>
 </body>
@@ -170,49 +195,5 @@
 </html>
 
 <style>
-    form {
-        display: grid;
-        background-color: #fff;
-        border-radius: 2rem;
-        padding: 2rem;
-    }
 
-    fieldset {
-        /* display: grid;
-    grid: auto 1fr / 1fr;    */
-    }
-
-    .article-group {
-        display: grid;
-        grid: auto / 1fr;
-    }
-
-    .section-group {
-        display: flex;
-        flex-wrap: wrap;
-        column-gap: 2rem;
-        height: fit-content;
-
-        & :has(#description) {
-            display: block;
-        }
-    }
-
-    .form-control {
-        display: grid;
-        grid: 1fr 30px / 1fr;
-        row-gap: 0.25rem;
-        width: fit-content;
-        height: fit-content;
-
-        & #description {
-            display: block;
-            min-width: 150px;
-            min-height: 75px;
-        }
-    }
-
-    .full-width {
-        width: 100%;
-    }
 </style>

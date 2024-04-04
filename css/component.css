@@ -1,13 +1,49 @@
-/* RECIPIES */
+/* RECIPES */
 /* CARD STYLING */
 .recipes {
   display: grid;
   grid: auto / 1fr;
-  background-color: hotpink;
   gap: 2rem;
 }
 .card {
   display: grid;
   padding-block: 1rem;
-  background-color: green;
+  background-color: #fff;
+  border-radius: 2rem;
+}
+/* FORMS */
+/* FORM STYLING */
+form {
+  display: grid;
+  background-color: #fff;
+  border-radius: 2rem;
+  padding: 2rem;
+}
+.article-group {
+  display: grid;
+  grid: auto / 1fr;
+}
+.section-group {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  height: fit-content;
+  & :has(#ingredients) {
+      display: block;
+  }
+}
+.form-control {
+  display: grid;
+  grid: 1fr 30px / 1fr;
+  row-gap: 0.25rem;
+  width: fit-content;
+  height: fit-content;
+  & #ingredients {
+      display: block;
+      min-width: 150px;
+      min-height: 75px;
+  }
+}
+.full-width {
+  width: 100%;
 }
