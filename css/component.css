@@ -1,71 +1,53 @@
+/* FORM */
 
 /* RECIPES */
 /* CARD STYLING */
-.recipes {
-  display: grid;
-  grid: auto / repeat(auto-fill, minmax(400px, 1fr));
-  gap: 2rem;
-}
 .card {
   display: grid;
-  padding-block: 1rem;
-  background-color: #fff;
-  border-radius: 2rem;
-}
-/* FORMS */
-/* FORM STYLING */
-form {
-  display: grid;
-  background-color: #fff;
-  border-radius: 2rem;
-  padding: 1.25rem;
-}
-legend {
-  font-weight: bold;
-}
-label {
-  font-weight: 600;
-
-}
-.article-group {
-  --flow_space: 1rem;
-  margin-block: var(--flow_space);
-  display: grid;
   grid: auto / 1fr;
-}
-.section-group {
-  --flow_space: 1.15rem;
-  margin-block: var(--flow_space);
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 2rem;
-  height: fit-content;
-  & :has(#ingredients) {
-      display: block;
-      width: 100%;
-  }
-}
-.form-control {
-  display: grid;
-  grid: 1fr 30px / 1fr;
-  row-gap: 0.25rem;
-  width: fit-content;
-  height: fit-content;
-  & #ingredients {
-      display: block;
-      min-width: 150px;
-      min-height: 75px;
-  }
-}
-.full-width {
-  width: 100%;
-}
-.container_wrapper {
-  container: recipes / inline-size;
-}
-@container (width > 500px) {
-  .container_wrapper {
+  & .cardContent {
     display: grid;
-    grid: auto / 1fr 1fr;
+  }
+}
+.cardBack {
+  --flow-space: 0.5rem;
+  display: grid;
+  margin-block: var(--flow-space);
+  gap: 1rem;
+  & > p {
+    padding: 0.5rem;
+    background-color: rgba(211, 211, 211, 0.438);
+  }
+}
+.infobar {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  & > p,
+  span {
+    padding: 0.5rem;
+    background-color: rgba(211, 211, 211, 0.438);
+  }
+}
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.header-content {
+  & h2 {
+    display: grid;
+    align-items: start;
+    justify-items: start;
+    & > span {
+      margin-inline: 1rem;
+    }
+  }
+}
+picture {
+  display: grid;
+  & img {
+    object-fit: cover;
+    align-self: stretch;
   }
 }

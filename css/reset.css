@@ -1,4 +1,4 @@
-/* *,
+*,
 ::before,
 ::after {
   box-sizing: border-box;
@@ -190,4 +190,4 @@ textarea:not([rows]) {
     animation-iteration-count: 1 !important;
     animation: 0.01s !important;
   }
-} */
+}

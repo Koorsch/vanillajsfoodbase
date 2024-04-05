@@ -1,24 +1,129 @@
 @layer reset, global, main, component, states;
 
-@import url("reset.css") layer(reset);
-@import url("global.css") layer(global);
-@import url("component.css") layer(component);
 @import url("./states.css") layer(states);
+@import url("./component.css") layer(component);
+@import url("./global.css") layer(global);
+@import url("./reset.css") layer(reset);
 
 html {
-  font-family: monospace;
+  background-color: var(--bg-col);
 }
 body {
   display: grid;
-  background-color: var(--bg-col);
+  grid-template-columns: [page-start] minmax(0px, 1fr) [content] 10fr [page-end] minmax(0px, 1fr);
+  margin: auto;
+  container: wrapper / inline-size;
 }
 main {
   display: grid;
-  grid: auto 1fr / [page-start] 1fr [content] minmax(0, var(--content)) [page-second] 1fr [page-end];
-  & > * {
-    grid-column: content;
+  grid-column: content;
+  grid-template-columns: minmax(20rem, 35rem);
+  place-content: center;
+  align-items: start;
+}
+.form-control {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-around;
+  margin-block: var(--flow-space);
+  & > * + * {
+    --flow-space: 0.5rem;
+    margin-block: var(--flow-space);
   }
-  & .full {
-    grid-column: page;
+}
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-evenly;
+}
+.article-group {
+  width: 100%;
+}
+button {
+  background-color: white;
+  margin: 0.75rem 0.35rem;
+  border-radius: 1rem;
+}
+button:hover {
+  background-color: hsla(45, 70%, 64%, 0.651);
+  border: 1px solid black;
+}
+input {
+  background-color: white;
+}
+select {
+  background-color: white;
+  width: fit-content;
+}
+textarea {
+  resize: none;
+  background-color: white;
+}
+
+#foodForm {
+  display: grid;
+  padding: 1.5rem;
+  background-color: var(--container-col);
+  box-shadow: var(--box-shadow);
+  border-radius: 2rem;
+
+  & h2 {
+    text-align: center;
+  }
+}
+.vertical {
+  display: grid;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+}
+.vertical:has(#nuts, #lactos, #food) {
+  grid-template-columns: 1fr;
+}
+.vertical:has(#vegetarian, #vegan, #pescatorian, #carnivore) {
+  grid-template-columns: 1fr;
+}
+#recipes {
+  > * {
+    padding: 1rem;
+    background-color: var(--container-col);
+    box-shadow: var(--box-shadow);
+    border-radius: 2rem;
+  }
+}
+
+:is(.form-control):has(#studentFriendly, [type="checkbox"], [type="radio"]) {
+  justify-content: left;
+  grid-template-columns: 1fr 1fr;
+}
+
+@container wrapper (width > 60rem) {
+  main {
+    grid-template-columns: minmax(15rem, 35rem) minmax(20rem, 35rem);
+    gap: 2rem;
+  }
+  #foodForm {
+    .form-group {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+    :is(.form-control):has(#studentFriendly, [type="checkbox"], [type="radio"]) {
+      justify-items: center;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .vertical:has(#nuts, #lactos, #food) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .vertical:has(#vegetarian, #vegan, #pescatorian, #carnivore) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@container wrapper (width < 59rem) {
+  .vertical {
+    grid-template-columns: 1fr;
   }
 }

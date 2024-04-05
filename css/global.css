@@ -1,9 +1,15 @@
 :root {
   /* CUSTOM SIZES */
   --content: 60rem;
+  /* FLOW SPACE */
+  --flow-space: 1rem;
+
   /* COLORS */
-  --bg-col: rgb(237, 210, 129);
-  --container-col: rgb(95, 180, 255);
+  --bg-col: rgb(250, 209, 86);
+  --container-col: rgb(237, 210, 129);
+  --border-col: hsla(45, 93%, 73%, 0.651);
+  --box-shadow: 0.25rem 0.25rem 0 0 var(--border-col), inset 0.1rem 0.1rem hsla(0, 0%, 100%, 0.301);
+
   --font-col-copy-1: rgb(59, 59, 59);
   --font-col-copy-2: rgb(40, 40, 40);
   --font-col-heading-1: #232323;
@@ -12,7 +18,7 @@
   /* FONT FAMILIES */
   --header-font: Arial, system-ui, sans-serif;
   --copy-font: mono-space, system-ui, sans-serif;
-  
+
   /* Font spacings */
   --space-xs: clamp(0.75rem, 0.7065rem + 0.2174cqi, 0.875rem);
   --space-s: clamp(1rem, 0.9565rem + 0.2174cqi, 1.125rem);
@@ -47,9 +53,6 @@
   --font-weight-2: 600;
   --font-weight-3: 700;
   --font-weight-4: 800;
-
-  /* FLOW SPACE */
-  --flow_space: 1rem;
 }
 
 body {
@@ -90,7 +93,8 @@ h3 {
 h4 {
   font-size: var(--font-size-2);
 }
-h5, legend {
+h5,
+legend {
   font-size: var(--font-size-1);
 }
 p,

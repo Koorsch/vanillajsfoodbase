@@ -11,62 +11,66 @@
 
 <body>
     <main>
-        <div class="container_wrapper">
-            <form id="foodForm" class="flow_space" aria-labelledby="header_food">
-                <h2 id="header_food">Make a dish</h2>
-                <article class="article-group">
-                    <fieldset class="section-group">
-                        <legend>Your dish</legend>
-                        <div class="form-control">
-                            <!-- name text-->
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" required autocomplete="off" minlength="2"
-                                inputmode="text">
-                        </div>
-                        <div class="form-control">
-                            <!-- type list text -->
-                            <label for="dishtype">Type of dish</label>
-                            <select data-dishtype name="dishtype" id="dishtype"  required>
-                                <option id="starter">Starter</option>
-                                <option id="main">Main</option>
-                                <option id="dessert">Dessert</option>
-                                <option id="snack">Snack</option>
-                            </select>
-                        </div>
-                        <div class="form-control">
-                            <!-- origin text -->
-                            <label for="origin">Origin</label>
-                            <input data-origin type="text" id="origin" name="origin" list="countrylist" required min="1" max="50" />
-                            <datalist id="countrylist">
-                                <option value="Denmark"></option>
-                                <option value="Sweden"></option>
-                                <option value="Norway"></option>
-                            </datalist>
-                        </div>
-                    </fieldset>
-                </article>
-                <article class="article-group">
-                    <fieldset class="section-group">
-                        <legend>What's in it?</legend>
-                        <div class="form-control">
-                            <label for="ingredients">Ingredients</label>
-                            <textarea class="full-width" name="ingredients" id="ingredients" rows="4" cols="1"
-                            inputmode="text"></textarea>
-                        </div>
-                        <div class="form-control">
-                            <!-- serves number -->
-                            <label for="serves">Servings</label>
-                            <input type="number" name="serves" id="serves" minlength="1" maxlength="999"
-                                inputmode="numeric" required>
-                        </div>
-                        <div class="form-control">
-                            <!-- student -->
-                            <label for="studentFriendly">Studentfriendly</label>
-                            <input type="checkbox" name="studentFriendly" id="studentFriendly">
-                        </div>
-                    </fieldset>
-                    <fieldset class="section-group" id="allergens" required>
-                        <legend>Allergens</legend>
+        <form id="foodForm" class="flow_space" aria-labelledby="header_food">
+            <h2 id="header_food">Make a dish</h2>
+            <article class="article-group">
+                <div class="form-control">
+                    <!-- name text-->
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required autocomplete="off" minlength="2" inputmode="text">
+                </div>
+                <div class="form-group vertical">
+                    <div class="form-control">
+                        <!-- type list text -->
+                        <label for="dishtype">Type of dish</label>
+                        <select data-dishtype name="dishtype" id="dishtype" required>
+                            <option id="starter">Starter</option>
+                            <option id="main">Main</option>
+                            <option id="dessert">Dessert</option>
+                            <option id="snack">Snack</option>
+                        </select>
+                    </div>
+                    <div class="form-control">
+                        <!-- serves number -->
+                        <label for="serves">Servings</label>
+                        <input type="number" name="serves" id="serves" min="1" max="999" inputmode="numeric" required>
+                    </div>
+                </div>
+                <div class="form-group vertical">
+                    <div class="form-control">
+                        <!-- origin text -->
+                        <label for="origin">Origin</label>
+                        <input data-origin type="text" id="origin" name="origin" list="countrylist" required min="1"
+                            max="50" />
+                        <datalist id="countrylist">
+                            <option value="Denmark"></option>
+                            <option value="Sweden"></option>
+                            <option value="Norway"></option>
+                        </datalist>
+                    </div>
+                    <div class="form-control">
+                        <!-- student -->
+                        <label for="studentFriendly">Studentfriendly</label>
+                        <input type="checkbox" name="studentFriendly" id="studentFriendly">
+                    </div>
+                </div>
+            </article>
+            <article class="article-group">
+                <div class="form-control">
+                    <label for="description">Description: </label>
+                    <textarea class="full-width" name="description" id="description" rows="4" cols="1"
+                        inputmode="text"></textarea>
+                </div>
+                <div class="form-control">
+                    <label for="ingredients">Ingredients: </label>
+                    <textarea class="full-width" name="ingredients" id="ingredients" rows="4" cols="1"
+                        inputmode="text"></textarea>
+                </div>
+            </article>
+            <article class="article-group">
+                <fieldset class="section-group" id="allergens" required>
+                    <legend>Allergens</legend>
+                    <div class="vertical">
                         <div class="form-control">
                             <label for="nuts">Nuts</label>
                             <input type="checkbox" name="nuts" id="nuts">
@@ -79,10 +83,13 @@
                             <label for="food">Food</label>
                             <input type="checkbox" name="food" id="food">
                         </div>
-                    </fieldset>
+                    </div>
+                </fieldset>
 
-                    <fieldset class="section-group" id="diet" required>
-                        <legend>Choose your diet.</legend>
+                <fieldset class="section-group" id="diet" required>
+                    <legend>Choose your diet.</legend>
+                    <div class="vertical">
+
                         <div class="form-control">
                             <label for="vegetarian">Vegetarian</label>
                             <input type="radio" id="vegetarian" name="vegetarian">
@@ -99,56 +106,49 @@
                             <label for="carnivore">Carnivore</label>
                             <input type="radio" id="carnivore" name="carnivore">
                         </div>
-                    </fieldset>
-                </article>
-                <button id="submit" type="submit">Send</button>
-            </form>
-            <section class="recipes"></section>
-        </div>
+                    </div>
+                </fieldset>
+            </article>
+            <button id="submit" type="submit">Send</button>
+        </form>
+        <article id="recipes"> </article>
     </main>
-
     <template>
-        <article class="card">
-            <input type="checkbox" name="card__dish" id="card__dish">
+
+        <section class="card">
             <header>
                 <div class="header-content">
-                    <h2>
-                        <label for="card__dish">
-                            <span data-name>Name of Dish</span>
-                        </label>
-                            <span data-origin>Origin</span>
-                        </h2>
-                    </div>
-                </header>
-                <section class="card__content">
-                    <div class="card__front">
-                        <picture>
-                            <img data-image src="assets/images/banana.png" alt="">
-                        </picture>
-                    </div>
-                    <div class="card__back">
-                        <p data-description></p>
-                        <p data-ingredients></p>
-                    </div>
-                </section>
-                <footer>
-                    <div>
-                        <span data-diet>You eat?</span>
-                        <span data-allergens>Want some lactos with DEEZ NUTS?</span>
-                        <span class="sf">Studentfriendly?</span>
-                        <span data-dishtype></span>
-                    </div>
-                    <div>
-                        <button data-id="15" data-action="delete">Delete</button>
-                        <button data-id="15" data-action="update">Update</button>
-                    </div>
-                </footer>
-        </article>
+                    <h2 data-name>Name of Dish</h2>
+                    <span data-origin>Origin</span>
+                </div>
+            </header>
+            <section class="cardContent">
+                <div class="cardFront">
+                    <picture>
+                        <img data-image src="assets/images/banana.png" alt="">
+                    </picture>
+                </div>
+                <div class="cardBack">
+                    <p>Description: <span data-description>Description</span></p>
+                    <p>Ingredients: <span data-ingredients>Ingredients</span></p>
+                </div>
+            </section>
+            <footer>
+                <div class="infobar">
+                    <p>Diet: <span data-diet>You eat?</span></p>
+                    <p>Allergens:<span data-allergens>Want some lactos with DEEZ NUTS?</span></p>
+                    <p class="sf">SF:<span class="sf">Studentfriendly</span></p>
+                    <p>Dishtype: <span data-dishtype></span></p>
+                </div>
+                <div class="actions">
+                    <button data-id="15" data-action="delete">Delete</button>
+                    <button data-id="15" data-action="update">Update</button>
+                </div>
+            </footer>
+        </section>
     </template>
+
     <script type="module" src="index.js"></script>
 </body>
+
 </html>
-
-<style>
-
-</style>

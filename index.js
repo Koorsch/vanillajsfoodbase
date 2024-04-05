@@ -6,31 +6,22 @@ setupCountries();
 
 async function showRecipes() {
   const response = await getRecipes();
-  // console.log("Currently FOODBASE contains: \n\n");
-  console.table(response);
   const el = document.querySelector("template").content;
-  const parent = document.querySelector(".recipes");
+  const parent = document.querySelector("#recipes");
   parent.innerHTML = "";
   response.forEach((rec) => {
     const clone = el.cloneNode(true);
 
-    // studentfriendly? 
+    // studentfriendly?
+    //put in a cross/checkmark svg...
+    //make sure it doesn't put it in the end of the queue
     if (rec.studentFriendly) {
       clone.querySelector(".sf").hidden = false;
     } else {
       clone.querySelector(".sf").hidden = true;
     }
 
-    // texts
-      // unique name,id and for on labels and inputs for each card
-    const dishName = clone.querySelector("input[name='card__dish']");
-    const dishId = clone.querySelector("input[id='card__dish']");
-    const dishLabel = clone.querySelector("label[for='card__dish']");
-    dishName.setAttribute("name", "dish" + rec.id);
-    dishId.setAttribute("id", "dish" + rec.id);
-    dishLabel.setAttribute("for", "dish" + rec.id)
-    
-    // filling the rest of the template 
+    // filling the rest of the template
     clone.querySelectorAll("[data-id]").forEach((e) => (e.dataset.id = rec.id));
     clone.querySelector("[data-name]").textContent = rec.name;
     clone.querySelector("[data-description]").textContent = rec.description;
@@ -39,10 +30,10 @@ async function showRecipes() {
     clone.querySelector("[data-diet]").textContent = rec.diet;
     clone.querySelector("[data-ingredients]").textContent = rec.ingredients;
     clone.querySelector("[data-allergens]").textContent = rec.allergens;
-    
+
     // image?
-      // if no imgurl supplied, default to banana.png?
-        // MAKE IT 
+    // if no imgurl supplied, default to banana.png?
+    // MAKE IT
     // clone.querySelector("[data-image]").src = rec.imgURL;
 
     // buttons
@@ -52,8 +43,8 @@ async function showRecipes() {
     });
     clone.querySelector("button[data-action='update']").addEventListener("click", async () => {
       //If clicked, compare with filled out form in a new function?
-        //If nothing has been filled, focus on the form
-          //Once clicked, run update() with the new values and then show().
+      //If nothing has been filled, focus on the form
+      //Once clicked, run update() with the new values and then show().
       await updateRecipe(rec.id, rec.studentFriendly);
       await showRecipes();
     });
@@ -69,6 +60,7 @@ function makeRecipe() {
     console.table(e);
     //stop refresh
     e.preventDefault();
+    form.checkValidity();
     const formData = new FormData(form);
 
     await createRecipe({
@@ -84,5 +76,6 @@ function makeRecipe() {
     });
     showRecipes();
   });
+  form.reset();
 }
 makeRecipe();
