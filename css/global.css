@@ -49,7 +49,7 @@
   --font-weight-4: 800;
 
   /* FLOW SPACE */
-  --flow_space: 0.25rem;
+  --flow_space: 1rem;
 }
 
 body {
@@ -90,7 +90,7 @@ h3 {
 h4 {
   font-size: var(--font-size-2);
 }
-h5 {
+h5, legend {
   font-size: var(--font-size-1);
 }
 p,

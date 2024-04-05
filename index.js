@@ -6,7 +6,7 @@ setupCountries();
 
 async function showRecipes() {
   const response = await getRecipes();
-  console.log("Currently FOODBASE contains: \n\n");
+  // console.log("Currently FOODBASE contains: \n\n");
   console.table(response);
   const el = document.querySelector("template").content;
   const parent = document.querySelector(".recipes");
@@ -22,7 +22,7 @@ async function showRecipes() {
     }
 
     // texts
-      // unique name,id and for
+      // unique name,id and for on labels and inputs for each card
     const dishName = clone.querySelector("input[name='card__dish']");
     const dishId = clone.querySelector("input[id='card__dish']");
     const dishLabel = clone.querySelector("label[for='card__dish']");
@@ -51,7 +51,10 @@ async function showRecipes() {
       await showRecipes();
     });
     clone.querySelector("button[data-action='update']").addEventListener("click", async () => {
-      await updateRecipe(rec.id, !rec.studentFriendly);
+      //If clicked, compare with filled out form in a new function?
+        //If nothing has been filled, focus on the form
+          //Once clicked, run update() with the new values and then show().
+      await updateRecipe(rec.id, rec.studentFriendly);
       await showRecipes();
     });
     // append dat shiz

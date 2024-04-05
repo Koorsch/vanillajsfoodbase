@@ -1,8 +1,9 @@
+
 /* RECIPES */
 /* CARD STYLING */
 .recipes {
   display: grid;
-  grid: auto / 1fr;
+  grid: auto / repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
 }
 .card {
@@ -17,19 +18,31 @@ form {
   display: grid;
   background-color: #fff;
   border-radius: 2rem;
-  padding: 2rem;
+  padding: 1.25rem;
+}
+legend {
+  font-weight: bold;
+}
+label {
+  font-weight: 600;
+
 }
 .article-group {
+  --flow_space: 1rem;
+  margin-block: var(--flow_space);
   display: grid;
   grid: auto / 1fr;
 }
 .section-group {
+  --flow_space: 1.15rem;
+  margin-block: var(--flow_space);
   display: flex;
   flex-wrap: wrap;
   column-gap: 2rem;
   height: fit-content;
   & :has(#ingredients) {
       display: block;
+      width: 100%;
   }
 }
 .form-control {
@@ -46,4 +59,13 @@ form {
 }
 .full-width {
   width: 100%;
+}
+.container_wrapper {
+  container: recipes / inline-size;
+}
+@container (width > 500px) {
+  .container_wrapper {
+    display: grid;
+    grid: auto / 1fr 1fr;
+  }
 }

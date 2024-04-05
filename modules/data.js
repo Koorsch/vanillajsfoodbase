@@ -58,7 +58,10 @@ export async function updateRecipe(id, state = true) {
     Prefer: "return=representation",
     "Content-Type": "application/json",
   };
-
+    //Use the ID with the UPDATE button on the card
+      //To take all the info sent from the card 
+      // Focus on the form and await a new submit?
+      
   let bodyContent = JSON.stringify({
     studentFriendly: state,
   });
