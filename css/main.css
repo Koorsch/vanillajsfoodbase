@@ -48,11 +48,16 @@ button:hover {
   background-color: hsla(45, 70%, 64%, 0.651);
   border: 1px solid black;
 }
-input {
+input, select, textarea {
   background-color: white;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+:is([type="checkbox"], [type="radio"],) {
+  width: 40px;
+  height: 40px;
 }
 select {
-  background-color: white;
   width: fit-content;
 }
 textarea {
